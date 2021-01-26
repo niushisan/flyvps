@@ -1,0 +1,30 @@
+# fly.toml 文件
+
+# 可用端口:80，443，5000，10000-10100。
+
+app = "flyvps"
+
+[[services]]
+  internal_port = 80
+
+  [[services.ports]]
+    port = "80"
+
+[[services]]
+  internal_port = 443
+
+  [[services.ports]]
+    port = "443"
+
+[[services]]
+  internal_port = 22
+
+  [[services.ports]]
+    port = "10000"
+
+[[services]]
+  internal_port = 5901
+
+  [[services.ports]]
+    port = "10001"
+
