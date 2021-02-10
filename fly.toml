@@ -20,11 +20,59 @@ app = "flyvps"
   internal_port = 22
 
   [[services.ports]]
-    port = "10000"
+    port = "5000"
 
 [[services]]
   internal_port = 5901
 
   [[services.ports]]
+    port = "10000"
+
+[[services]]
+  internal_port = 10001
+
+  [[services.ports]]
     port = "10001"
+
+[[services]]
+  internal_port = 10002
+
+  [[services.ports]]
+    port = "10002"
+
+[[services]]
+  internal_port = 10003
+
+  [[services.ports]]
+    port = "10003"
+
+[[services]]
+  internal_port = 10004
+
+  [[services.ports]]
+    port = "10004"
+
+[[services]]
+  internal_port = 10005
+
+  [[services.ports]]
+    port = "10005"
+
+[[services]]
+  internal_port = 10006
+
+  [[services.ports]]
+    port = "10006"
+
+[[services]]
+  internal_port = 10007
+
+  [[services.ports]]
+    port = "10007"
+
+[[services]]
+  internal_port = 10008
+
+  [[services.ports]]
+    port = "10008"
 

@@ -14,7 +14,7 @@ ubuntu
 ubuntu
 yes
 EOF
-echo 'ubuntu ALL=(ALL) ALL' >> /etc/sudoers
+echo 'ubuntu ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 echo 'root:root' | chpasswd
 echo 'ubuntu:ubuntu' | chpasswd
 hostname flyvps
