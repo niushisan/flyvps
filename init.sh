@@ -1,9 +1,12 @@
 #!/bin/bash
-dd if=/dev/zero of=/root/swapfile bs=1M count=512
-mkswap /root/swapfile
-chmod 0600 /root/swapfile
+mkdir -p /root/swap
+chown -R root:root /root/swap/
+chmod -R 0770 /root/swap/
+dd if=/dev/zero of=/root/swap/swap bs=1M count=1024
+mkswap /root/swap/swap
+chmod 0600 /root/swap/swap
 sysctl vm.swappiness=100
-swapon /root/swapfile
+swapon /root/swap/swap
 adduser ubuntu <<EOF
 ubuntu
 ubuntu
@@ -18,6 +21,8 @@ echo 'ubuntu ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 echo 'root:root' | chpasswd
 echo 'ubuntu:ubuntu' | chpasswd
 hostname flyvps
+echo '127.0.0.1 flyvps' >> /etc/hosts
+echo '::1 flyvps' >> /etc/hosts
 apt update -y
 apt install libapache2-mod-php7.4 libphp7.4-embed php7.4 php7.4-bcmath php7.4-bz2 php7.4-cgi php7.4-cli php7.4-common php7.4-curl php7.4-dba php7.4-dev php7.4-enchant php7.4-fpm php7.4-gd php7.4-gmp php7.4-imap php7.4-interbase php7.4-intl php7.4-json php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-odbc php7.4-opcache php7.4-pgsql php7.4-phpdbg php7.4-pspell php7.4-readline php7.4-snmp php7.4-soap php7.4-sqlite3 php7.4-sybase php7.4-tidy php7.4-xml php7.4-xmlrpc php7.4-xsl php7.4-zip -y
 apt clean -y
@@ -38,7 +43,7 @@ mkdir -p /var/run/sshd
 service ssh start
 mkdir -p /root/.fly/bin
 cd /root/.fly/bin
-wget -U KCC/1.0 https://github.com/superfly/flyctl/releases/download/v0.0.140/flyctl_0.0.140_Linux_x86_64.tar.gz -O flyctl.tar.gz
+wget -U KCC/1.0 https://github.com/superfly/flyctl/releases/download/v0.0.173/flyctl_0.0.173_Linux_x86_64.tar.gz -O flyctl.tar.gz
 tar -zxvf flyctl.tar.gz
 rm -rf flyctl.tar.gz
 cd /root/

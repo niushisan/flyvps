@@ -44,6 +44,7 @@ RUN apt clean -y \
     && apt install strace -y \
     && apt install rename -y \
     && apt install bash -y \
+    && apt install ntpdate -y \
     && apt install linux-image-generic -y \
     && apt install kmod -y \
     && apt clean -y \
